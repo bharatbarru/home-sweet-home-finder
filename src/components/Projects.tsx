@@ -46,12 +46,12 @@ const Projects = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-gold font-medium tracking-widest uppercase text-sm mb-4">
+          <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
             Featured Portfolio
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground font-bold mb-6">
             Our Exclusive<br />
-            <span className="text-gold">Properties</span>
+            <span className="text-secondary">Properties</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Explore our handpicked selection of extraordinary homes, each
@@ -76,7 +76,7 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-gold text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
+                  <span className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
                     {project.type}
                   </span>
                 </div>
@@ -89,11 +89,11 @@ const Projects = () => {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2 group-hover:text-gold transition-colors">
+                <h3 className="font-heading text-xl font-bold text-foreground mb-2 group-hover:text-secondary transition-colors">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <MapPin className="w-4 h-4 text-gold" />
+                  <MapPin className="w-4 h-4 text-secondary" />
                   <span className="text-sm">{project.location}</span>
                 </div>
 
@@ -113,7 +113,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full mt-4 hover:bg-gold hover:text-primary hover:border-gold transition-all">
+                <Button variant="outline" className="w-full mt-4 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all">
                   View Details
                 </Button>
               </div>
@@ -123,7 +123,7 @@ const Projects = () => {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button variant="gold" size="lg">
+          <Button variant="accent" size="lg">
             View All Properties
           </Button>
         </div>
