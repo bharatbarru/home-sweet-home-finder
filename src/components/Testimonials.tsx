@@ -17,7 +17,7 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
     content:
       "As an investor, I've worked with many agencies. Vision Developers stands out for their market expertise and professional approach. They've helped me build an impressive portfolio.",
-    rating: 5,
+    rating: 4,
   },
   {
     id: 3,
@@ -78,7 +78,7 @@ const Testimonials = () => {
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-border">
+              {/* <div className="flex items-center gap-4 pt-6 border-t border-border">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
@@ -92,7 +92,7 @@ const Testimonials = () => {
                     {testimonial.role}
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

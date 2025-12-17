@@ -1,5 +1,16 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-mansion.jpg";
+import heroImage from "@/assets/banner.jpg";
+
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+const HERO_STATS: StatItem[] = [
+  { value: "500+", label: "Properties Sold" },
+  { value: "$2B+", label: "Total Value" },
+  { value: "15+", label: "Years Experience" },
+];
 
 const HeroBanner = () => {
   return (
@@ -7,16 +18,11 @@ const HeroBanner = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-navy/30" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 container-custom px-4 md:px-8 text-center md:text-left">
         <div className="max-w-3xl animate-fade-up">
           <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
@@ -27,8 +33,7 @@ const HeroBanner = () => {
             <span className="block text-red-light">Dream Home</span>
           </h1>
           <p className="text-cream/80 text-lg md:text-xl max-w-xl mb-8 font-light">
-            Experience unparalleled elegance with our exclusive collection of
-            luxury properties. Where sophistication meets comfort.
+            Experience unparalleled elegance with our exclusive collection of luxury properties. Where sophistication meets comfort.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <Button variant="hero" size="xl">
@@ -40,18 +45,13 @@ const HeroBanner = () => {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="absolute bottom-12 left-0 right-0 px-4 md:px-8">
           <div className="container-custom">
             <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl">
-              {[
-                { value: "500+", label: "Properties Sold" },
-                { value: "$2B+", label: "Total Value" },
-                { value: "15+", label: "Years Experience" },
-              ].map((stat, index) => (
+              {HERO_STATS.map((stat, index) => (
                 <div
                   key={index}
-                  className="text-center md:text-left animate-fade-up"
+                  className="text-center md:text-left animate-on-scroll animate-stagger-1"
                   style={{ animationDelay: `${index * 0.1 + 0.3}s` }}
                 >
                   <p className="font-heading text-2xl md:text-4xl text-secondary font-bold">
@@ -67,12 +67,6 @@ const HeroBanner = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-        <div className="w-6 h-10 border-2 border-cream/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-secondary rounded-full mt-2" />
-        </div>
-      </div>
     </section>
   );
 };

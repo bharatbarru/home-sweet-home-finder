@@ -1,8 +1,8 @@
 import { MapPin, Bed, Bath, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/flat1.jpg";
+import project2 from "@/assets/flat2.jpg";
+import project3 from "@/assets/flat3.jpg";
 
 const projects = [
   {
@@ -10,7 +10,6 @@ const projects = [
     image: project1,
     title: "The Manhattan Penthouse",
     location: "New York, NY",
-    price: "$12,500,000",
     beds: 5,
     baths: 6,
     sqft: "8,500",
@@ -21,7 +20,6 @@ const projects = [
     image: project2,
     title: "Oceanfront Paradise",
     location: "Miami Beach, FL",
-    price: "$18,750,000",
     beds: 7,
     baths: 8,
     sqft: "12,000",
@@ -32,7 +30,6 @@ const projects = [
     image: project3,
     title: "Mountain Retreat",
     location: "Aspen, CO",
-    price: "$9,200,000",
     beds: 6,
     baths: 5,
     sqft: "7,200",
@@ -75,58 +72,17 @@ const Projects = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
-                    {project.type}
-                  </span>
-                </div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <p className="font-heading text-2xl text-cream font-bold">
-                    {project.price}
-                  </p>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2 group-hover:text-secondary transition-colors">
-                  {project.title}
-                </h3>
-                <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <MapPin className="w-4 h-4 text-secondary" />
-                  <span className="text-sm">{project.location}</span>
-                </div>
-
-                {/* Features */}
-                <div className="flex items-center gap-4 py-4 border-t border-border">
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Bed className="w-4 h-4" />
-                    <span className="text-sm">{project.beds} Beds</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Bath className="w-4 h-4" />
-                    <span className="text-sm">{project.baths} Baths</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Square className="w-4 h-4" />
-                    <span className="text-sm">{project.sqft} sqft</span>
-                  </div>
-                </div>
-
-                <Button variant="outline" className="w-full mt-4 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all">
-                  View Details
-                </Button>
-              </div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button variant="accent" size="lg">
-            View All Properties
-          </Button>
-        </div>
+       
       </div>
     </section>
   );

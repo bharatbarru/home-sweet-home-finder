@@ -5,7 +5,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { MessageCircle, Send } from "lucide-react";
+import { useState } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 const faqs = [
   {
@@ -41,26 +52,43 @@ const faqs = [
 ];
 
 const FAQ = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    console.log('Form submitted:', formData);
+    // Reset form
+    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(false);
+  };
+
   return (
-    <section id="faq" className="section-padding bg-muted">
+    <section id="faq" className="section-padding bg-light">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Column - Header */}
           <div className="lg:sticky lg:top-32">
-            <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
-              Common Questions
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground font-bold mb-6">
-              Frequently Asked<br />
-              <span className="text-secondary">Questions</span>
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Have questions? We have answers. If you can't find what you're
-              looking for, our team is always ready to help.
-            </p>
-
-            <div className="bg-card rounded-2xl p-6 shadow-soft border border-border/50">
-              <div className="flex items-center gap-4 mb-4">
+              <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
+              Contact Us
+            </h3>
+            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 shadow-soft border border-border/50">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-secondary" />
                 </div>
@@ -69,18 +97,104 @@ const FAQ = () => {
                     Still have questions?
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    We're here to help
+                    Send us a message and we'll get back to you
                   </p>
                 </div>
               </div>
-              <Button variant="accent" className="w-full">
-                Contact Our Team
-              </Button>
-            </div>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-sm font-medium text-foreground">
+                      Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="border-border/50 focus:border-secondary/50"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Email *
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="border-border/50 focus:border-secondary/50"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-medium text-foreground">
+                    Phone
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="border-border/50 focus:border-secondary/50"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-sm font-medium text-foreground">
+                    Message *
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={4}
+                    className="border-border/50 focus:border-secondary/50 resize-none"
+                    placeholder="Tell us how we can help you..."
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  variant="accent" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </div>
+            </form>
           </div>
 
           {/* Right Column - FAQ Accordion */}
           <div>
+              <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
+              Frequently Asked Questions
+            </h3>
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem
