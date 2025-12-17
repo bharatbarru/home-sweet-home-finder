@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,17 +32,14 @@ const Header = () => {
       }`}
     >
       <div className="container-custom px-4 md:px-8 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <span className={`font-heading text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300 ${
-            isScrolled ? "text-primary" : "text-cream"
-          }`}>
-            Prestige
-          </span>
-          <span className={`font-heading text-2xl md:text-3xl font-light transition-colors duration-300 ${
-            isScrolled ? "text-gold" : "text-gold-light"
-          }`}>
-            Estates
-          </span>
+        <a href="#home" className="flex items-center">
+          <img 
+            src={logo} 
+            alt="Vision Developers" 
+            className={`h-10 md:h-12 w-auto transition-all duration-300 ${
+              isScrolled ? "" : "brightness-0 invert"
+            }`}
+          />
         </a>
 
         {/* Desktop Navigation */}
@@ -50,14 +48,14 @@ const Header = () => {
             <a
               key={link.label}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-300 hover:text-gold ${
+              className={`text-sm font-medium transition-all duration-300 hover:text-secondary ${
                 isScrolled ? "text-foreground" : "text-cream"
               }`}
             >
               {link.label}
             </a>
           ))}
-          <Button variant={isScrolled ? "gold" : "hero"} size="lg">
+          <Button variant={isScrolled ? "accent" : "hero"} size="lg">
             Contact Us
           </Button>
         </nav>
@@ -86,13 +84,13 @@ const Header = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-foreground hover:text-gold py-3 px-4 rounded-lg hover:bg-muted transition-colors"
+              className="text-foreground hover:text-secondary py-3 px-4 rounded-lg hover:bg-muted transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <Button variant="gold" className="mt-2">
+          <Button variant="accent" className="mt-2">
             Contact Us
           </Button>
         </nav>

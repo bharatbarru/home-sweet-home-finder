@@ -19,12 +19,12 @@ const HeroBanner = () => {
       {/* Content */}
       <div className="relative z-10 container-custom px-4 md:px-8 text-center md:text-left">
         <div className="max-w-3xl animate-fade-up">
-          <p className="text-gold font-medium tracking-widest uppercase text-sm mb-4">
+          <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
             Luxury Real Estate
           </p>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl text-cream font-bold leading-tight mb-6">
             Discover Your
-            <span className="block text-gold-light">Dream Home</span>
+            <span className="block text-red-light">Dream Home</span>
           </h1>
           <p className="text-cream/80 text-lg md:text-xl max-w-xl mb-8 font-light">
             Experience unparalleled elegance with our exclusive collection of
@@ -54,7 +54,7 @@ const HeroBanner = () => {
                   className="text-center md:text-left animate-fade-up"
                   style={{ animationDelay: `${index * 0.1 + 0.3}s` }}
                 >
-                  <p className="font-heading text-2xl md:text-4xl text-gold font-bold">
+                  <p className="font-heading text-2xl md:text-4xl text-secondary font-bold">
                     {stat.value}
                   </p>
                   <p className="text-cream/70 text-xs md:text-sm mt-1">
@@ -70,7 +70,7 @@ const HeroBanner = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
         <div className="w-6 h-10 border-2 border-cream/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gold rounded-full mt-2" />
+          <div className="w-1 h-3 bg-secondary rounded-full mt-2" />
         </div>
       </div>
     </section>

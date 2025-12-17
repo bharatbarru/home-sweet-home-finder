@@ -34,7 +34,7 @@ const faqs = [
       "Absolutely! We offer comprehensive selling services including professional photography, virtual tours, strategic marketing, and access to our network of qualified buyers. Many clients use us for both buying and selling.",
   },
   {
-    question: "What sets Prestige Estates apart?",
+    question: "What sets Vision Developers apart?",
     answer:
       "Our commitment to personalized service, deep market expertise, and exclusive property access sets us apart. We limit our client roster to ensure each receives dedicated attention, and our off-market listings give you access to properties others can't find.",
   },
@@ -47,12 +47,12 @@ const FAQ = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Column - Header */}
           <div className="lg:sticky lg:top-32">
-            <p className="text-gold font-medium tracking-widest uppercase text-sm mb-4">
+            <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
               Common Questions
             </p>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground font-bold mb-6">
               Frequently Asked<br />
-              <span className="text-gold">Questions</span>
+              <span className="text-secondary">Questions</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               Have questions? We have answers. If you can't find what you're
@@ -61,8 +61,8 @@ const FAQ = () => {
 
             <div className="bg-card rounded-2xl p-6 shadow-soft border border-border/50">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center">
-                  <MessageCircle className="w-6 h-6 text-gold" />
+                <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-secondary" />
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground">
@@ -73,7 +73,7 @@ const FAQ = () => {
                   </p>
                 </div>
               </div>
-              <Button variant="gold" className="w-full">
+              <Button variant="accent" className="w-full">
                 Contact Our Team
               </Button>
             </div>
@@ -86,9 +86,9 @@ const FAQ = () => {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card rounded-xl border border-border/50 px-6 shadow-soft data-[state=open]:border-gold/30 transition-colors"
+                  className="bg-card rounded-xl border border-border/50 px-6 shadow-soft data-[state=open]:border-secondary/30 transition-colors"
                 >
-                  <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:text-gold py-5 hover:no-underline">
+                  <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:text-secondary py-5 hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">

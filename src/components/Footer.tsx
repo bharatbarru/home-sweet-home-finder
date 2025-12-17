@@ -12,9 +12,9 @@ const Footer = () => {
             {/* Brand */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
-                <span className="font-heading text-2xl font-bold">Prestige</span>
-                <span className="font-heading text-2xl font-light text-gold">
-                  Estates
+                <span className="font-heading text-2xl font-bold">Vision</span>
+                <span className="font-heading text-2xl font-light text-secondary">
+                  Developers
                 </span>
               </div>
               <p className="text-cream/70 mb-6 leading-relaxed">
@@ -26,7 +26,7 @@ const Footer = () => {
                   <a
                     key={index}
                     href="#"
-                    className="w-10 h-10 rounded-lg bg-cream/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-all duration-300"
+                    className="w-10 h-10 rounded-lg bg-cream/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-all duration-300"
                   >
                     <Icon className="w-5 h-5" />
                   </a>
@@ -50,7 +50,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-cream/70 hover:text-gold transition-colors"
+                      className="text-cream/70 hover:text-secondary transition-colors"
                     >
                       {link}
                     </a>
@@ -75,7 +75,7 @@ const Footer = () => {
                   <li key={service}>
                     <a
                       href="#"
-                      className="text-cream/70 hover:text-gold transition-colors"
+                      className="text-cream/70 hover:text-secondary transition-colors"
                     >
                       {service}
                     </a>
@@ -91,7 +91,7 @@ const Footer = () => {
               </h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                   <span className="text-cream/70">
                     123 Luxury Lane, Suite 500
                     <br />
@@ -99,21 +99,21 @@ const Footer = () => {
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-gold flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
                   <a
                     href="tel:+12125551234"
-                    className="text-cream/70 hover:text-gold transition-colors"
+                    className="text-cream/70 hover:text-secondary transition-colors"
                   >
                     +1 (212) 555-1234
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-gold flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-secondary flex-shrink-0" />
                   <a
-                    href="mailto:hello@prestigeestates.com"
-                    className="text-cream/70 hover:text-gold transition-colors"
+                    href="mailto:hello@visiondevelopers.com"
+                    className="text-cream/70 hover:text-secondary transition-colors"
                   >
-                    hello@prestigeestates.com
+                    hello@visiondevelopers.com
                   </a>
                 </li>
               </ul>
@@ -127,7 +127,7 @@ const Footer = () => {
         <div className="container-custom px-4 md:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-cream/50 text-sm">
-              © {currentYear} Prestige Estates. All rights reserved.
+              © {currentYear} Vision Developers. All rights reserved.
             </p>
             <div className="flex gap-6">
               {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
@@ -135,7 +135,7 @@ const Footer = () => {
                   <a
                     key={link}
                     href="#"
-                    className="text-cream/50 text-sm hover:text-gold transition-colors"
+                    className="text-cream/50 text-sm hover:text-secondary transition-colors"
                   >
                     {link}
                   </a>
