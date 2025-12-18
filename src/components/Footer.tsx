@@ -238,17 +238,18 @@ const Footer = () => {
                 <li className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-secondary flex-shrink-0" />
                   <span className="text-cream/70">
-                    123 Luxury Lane, Suite 500<br />
-                    New York, NY 10001
+                    #5-154/14,Survey No107/1,2,3<br />
+                    Near Iskcon Temple, Sagar Nagar Yendada,<br />
+                    Visakhapatnam 530045
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
                   <a
-                    href="tel:+12125551234"
+                    href="tel:+918341144913"
                     className="text-cream/70 hover:text-secondary transition-colors"
                   >
-                    +1 (212) 555-1234
+                    +91 8341144913
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -257,7 +258,7 @@ const Footer = () => {
                     href="mailto:hello@visiondevelopers.com"
                     className="text-cream/70 hover:text-secondary transition-colors"
                   >
-                    hello@visiondevelopers.com
+                    info@visiondevelopers.org
                   </a>
                 </li>
               </ul>

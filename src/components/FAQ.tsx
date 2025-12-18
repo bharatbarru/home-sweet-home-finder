@@ -10,6 +10,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 interface FormData {
   name: string;
@@ -19,75 +28,143 @@ interface FormData {
 }
 
 const faqs = [
-  {
-    question: "How do I schedule a property viewing?",
+   {
+    question: "Why should I choose Vision Developers?",
     answer:
-      "Scheduling a viewing is easy! Simply click the 'Schedule a Tour' button on any property listing, or contact our team directly. We offer flexible viewing times including weekends and evenings to accommodate your schedule.",
+      "Vision Developers is known for transparent dealings, quality construction, timely delivery, and a customer-first approach.",
   },
   {
-    question: "What areas do you specialize in?",
+    question: "What is the starting price of the homes?",
     answer:
-      "We specialize in luxury properties across major metropolitan areas including New York, Miami, Los Angeles, San Francisco, and Aspen. Our expertise spans urban penthouses, beachfront villas, mountain estates, and exclusive gated communities.",
+      "Pricing is competitive and varies based on the unit configuration and specifications. For exact pricing details, please contact our sales team.",
   },
   {
-    question: "Do you offer assistance with financing?",
+    question: "What amenities are included in the project?",
     answer:
-      "Yes, we partner with leading financial institutions to help our clients secure the best possible financing options. Our team can connect you with trusted mortgage brokers who specialize in luxury property financing.",
+      "The project includes essential amenities such as parking, security, Multi community hall, Gym, lifts, Solar and well-planned common areas.",
   },
   {
-    question: "What is the buying process like?",
+    question: "What is the expected possession date?",
     answer:
-      "Our buying process is streamlined and transparent. After identifying your ideal property, we guide you through negotiations, due diligence, inspections, and closing. Your dedicated agent will be with you every step of the way.",
+      "The possession timeline is clearly communicated at the time of booking, and we are committed to delivering as per schedule.",
   },
   {
-    question: "Can you help sell my current property?",
+    question: "How can I book a site visit?",
     answer:
-      "Absolutely! We offer comprehensive selling services including professional photography, virtual tours, strategic marketing, and access to our network of qualified buyers. Many clients use us for both buying and selling.",
+      "You can book a site visit by filling out the enquiry form on the website or by directly contacting our sales team.",
   },
   {
-    question: "What sets Vision Developers apart?",
+    question: "Why should I choose Vision Developers?",
     answer:
-      "Our commitment to personalized service, deep market expertise, and exclusive property access sets us apart. We limit our client roster to ensure each receives dedicated attention, and our off-market listings give you access to properties others can't find.",
+      "Vision Developers is known for transparent dealings, quality construction, timely delivery, and a customer-first approach.",
+  },
+  {
+    question: "What is the construction quality like?",
+    answer:
+      "We use high-quality materials and follow strict construction standards to ensure durability, safety, and long-term value.",
   },
 ];
 
 const FAQ = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState<{ open: boolean; mode: 'success' | 'error' | null; message?: string }>({ open: false, mode: null });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // simple required check
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setShowModal({ open: true, mode: 'error', message: 'Please fill Name, Email and Message – they are required.' });
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', phone: '', message: '' });
+
+    // fake loading (looks professional)
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    // show success modal with option to open mail client
+    setShowModal({ open: true, mode: 'success', message: 'Your message is ready. Open your mail client to send.' });
     setIsSubmitting(false);
   };
 
   return (
     <section id="faq" className="section-padding bg-light">
+      <Dialog open={showModal.open} onOpenChange={(open) => setShowModal((s) => ({ ...s, open }))}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{showModal.mode === 'success' ? 'Message Ready' : 'Notice'}</DialogTitle>
+            <DialogDescription>{showModal.message}</DialogDescription>
+          </DialogHeader>
+
+          <div className="pt-2">
+            {showModal.mode === 'success' && (
+              <p className="text-sm text-muted-foreground">Click the button below to open your mail client and send the message to visiondevelopersvizag@gmail.com.</p>
+            )}
+          </div>
+
+          <DialogFooter>
+            {showModal.mode === 'success' ? (
+              <>
+                <button
+                  className="btn mr-2 inline-flex items-center rounded-md bg-accent px-4 py-2 text-white"
+                  onClick={() => {
+                    const to = 'visiondevelopersvizag@gmail.com';
+                    const subject = `Contact from ${formData.name || 'Website Visitor'}`;
+                    const body = `${formData.message}\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}`;
+                    // Open Gmail compose in a new tab (reliable for users who use Gmail in browser)
+                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                      to
+                    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    try {
+                      window.open(gmailUrl, '_blank');
+                    } catch (err) {
+                      // fallback to mailto
+                      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      window.location.href = mailto;
+                    }
+                    setShowModal({ open: false, mode: null });
+                    setFormData({ name: '', email: '', phone: '', message: '' });
+                  }}
+                >
+                  Open Mail Client
+                </button>
+                <DialogClose asChild>
+                  <button className="btn inline-flex items-center rounded-md border px-4 py-2">Close</button>
+                </DialogClose>
+              </>
+            ) : (
+              <DialogClose asChild>
+                <button className="btn inline-flex items-center rounded-md border px-4 py-2">OK</button>
+              </DialogClose>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column - Header */}
+          {/* Left – Contact Form */}
           <div className="lg:sticky lg:top-32">
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
               Contact Us
             </h3>
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 shadow-soft border border-border/50">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-card rounded-2xl p-6 shadow-soft border border-border/50"
+            >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-secondary" />
@@ -101,7 +178,7 @@ const FAQ = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -114,12 +191,11 @@ const FAQ = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleInputChange}
-                      required
                       className="border-border/50 focus:border-secondary/50"
                       placeholder="Your full name"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium text-foreground">
                       Email *
@@ -130,13 +206,12 @@ const FAQ = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      required
                       className="border-border/50 focus:border-secondary/50"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="phone" className="text-sm font-medium text-foreground">
                     Phone
@@ -151,7 +226,7 @@ const FAQ = () => {
                     placeholder="(555) 123-4567"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-sm font-medium text-foreground">
                     Message *
@@ -161,16 +236,15 @@ const FAQ = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    required
                     rows={4}
                     className="border-border/50 focus:border-secondary/50 resize-none"
                     placeholder="Tell us how we can help you..."
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  variant="accent" 
+
+                <Button
+                  type="submit"
+                  variant="accent"
                   className="w-full"
                   disabled={isSubmitting}
                 >
@@ -190,9 +264,9 @@ const FAQ = () => {
             </form>
           </div>
 
-          {/* Right Column - FAQ Accordion */}
+          {/* Right – FAQ */}
           <div>
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-4">
               Frequently Asked Questions
             </h3>
             <Accordion type="single" collapsible className="space-y-4">

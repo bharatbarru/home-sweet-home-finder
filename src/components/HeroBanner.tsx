@@ -25,23 +25,25 @@ const HeroBanner = () => {
 
       <div className="relative z-10 container-custom px-4 md:px-8 text-center md:text-left">
         <div className="max-w-3xl animate-fade-up">
-          <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
-            Luxury Real Estate
-          </p>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl text-cream font-bold leading-tight mb-6">
-            Discover Your
-            <span className="block text-red-light">Dream Home</span>
+            A Life More
+            <span className="block text-red-light ">Scenic</span>
           </h1>
           <p className="text-cream/80 text-lg md:text-xl max-w-xl mb-8 font-light">
-            Experience unparalleled elegance with our exclusive collection of luxury properties. Where sophistication meets comfort.
+          20 Bespoke Residences | State-Of-The-Art Amenities <br/>
           </p>
+            <p className="text-cream/80 text-lg md:text-xl max-w-xl mb-8 font-light">
+            Step into a world of unmatched luxury and behold the breathtaking sea views every day from our opulent 3 BHK apartments at Aditya Gold & Aditya Platinum in Sagar Nagar, Visakhapatnam.
+            </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="#projects">
             <Button variant="hero" size="xl">
               Explore Properties
             </Button>
-            <Button variant="hero-outline" size="xl">
+            </a>
+            {/* <Button variant="hero-outline" size="xl">
               Schedule a Tour
-            </Button>
+            </Button> */}
           </div>
         </div>
 

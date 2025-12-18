@@ -7,7 +7,7 @@ const testimonials = [
     role: "Homeowner",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
     content:
-      "Working with Vision Developers was an absolute dream. They found us our perfect family home within weeks. Their attention to detail and understanding of our needs was remarkable.",
+      "We were looking for a safe and peaceful place for our family. Vision Developers delivered exactly that. The layout, ventilation, and surroundings are perfect for daily living.",
     rating: 5,
   },
   {
@@ -16,7 +16,7 @@ const testimonials = [
     role: "Property Investor",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
     content:
-      "As an investor, I've worked with many agencies. Vision Developers stands out for their market expertise and professional approach. They've helped me build an impressive portfolio.",
+      "The construction quality and finishing stood out to me. Even small details were taken care of, which shows the experience and commitment of Vision Developers.",
     rating: 4,
   },
   {
@@ -25,7 +25,7 @@ const testimonials = [
     role: "First-time Buyer",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
     content:
-      "Being a first-time buyer was daunting, but the team made it so easy. They guided me through every step with patience and expertise. I couldn't be happier with my new home!",
+      "What impressed me most was on-time progress. Every milestone was communicated clearly, and the project moved exactly as planned.",
     rating: 5,
   },
 ];
@@ -101,9 +101,9 @@ const Testimonials = () => {
         <div className="mt-16 pt-12 border-t border-border">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             {[
-              "Trusted by 5000+ Clients",
-              "Award-Winning Service",
-              "15+ Years Excellence",
+              "Trusted by Many Clients",
+              "Quality Service",
+              "On-Time Delivery",
               "98% Satisfaction Rate",
             ].map((badge, index) => (
               <div

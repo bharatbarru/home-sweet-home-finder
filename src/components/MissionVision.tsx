@@ -14,7 +14,7 @@ const MissionVision = () => {
             <span className="text-secondary">Creating Legacies</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            For over 15 years, we've been committed to helping families find
+            we've been committed to helping families find
             their perfect home and investors secure exceptional properties.
           </p>
         </div>
@@ -30,10 +30,15 @@ const MissionVision = () => {
               Our Mission
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              To transform the real estate experience by providing unparalleled
-              service, expert guidance, and a curated selection of exceptional
-              properties. We believe every client deserves personalized attention
-              and access to the finest homes available.
+                We established with a mission to accomplish complete Client
+                Satisfaction, Implementation of Excellence and Timely
+                Completion.
+                We provide fine living
+                environment with supreme
+                quality, visually charming
+                homes complete with all
+                conveniences and highest
+                value for money.
             </p>
             <div className="mt-6 pt-6 border-t border-border">
               <ul className="space-y-3">
@@ -56,10 +61,7 @@ const MissionVision = () => {
               Our Vision
             </h3>
             <p className="text-cream/80 leading-relaxed">
-              To be the most trusted name in luxury real estate, setting the
-              standard for excellence in property services. We envision a future
-              where finding your dream home is seamless, enjoyable, and
-              extraordinarily rewarding.
+             To be a trusted and leading realestate company in delivering visually inspiring, high-quality living spaces by consistently exceeding client expectations through excellence in execution, timely delivery, and uncompromising value for money—creating homes that enrich lives and communities.
             </p>
             <div className="mt-6 pt-6 border-t border-cream/20">
               <ul className="space-y-3">

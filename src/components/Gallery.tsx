@@ -1,5 +1,5 @@
 import gallery1 from "@/assets/gallery1.jpg";
-import gallery2 from "@/assets/banner2.jpg";
+import gallery2 from "@/assets/banner2.png";
 import gallery3 from "@/assets/banner3.jpg";
 import gallery4 from "@/assets/banner4.png";
 import gallery5 from "@/assets/banner5.jpg";
